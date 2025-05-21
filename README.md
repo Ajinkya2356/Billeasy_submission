@@ -67,7 +67,7 @@ book-review-api/
 
 1. Clone the repository
 ```
-git clone https://github.com/yourusername/book-review-api.git
+git clone https://github.com/Ajinkya2356/book-review-api.git
 cd book-review-api
 ```
 
