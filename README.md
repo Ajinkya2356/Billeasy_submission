@@ -171,7 +171,3 @@ curl -X GET "http://localhost:3000/api/search?query=great"
 4. **Pagination**: Implemented on book listings and reviews to handle large amounts of data efficiently.
 
 5. **Case-Insensitive Search**: The search functionality is case-insensitive and works with partial matches for better user experience.
-
-## License
-
-MIT
