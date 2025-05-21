@@ -17,8 +17,10 @@ const searchRoutes = require('./routes/search.routes');
 // Initialize app
 const app = express();
 
-// Connect to database
-connectDB();
+// Don't connect to database automatically in test environment
+if (process.env.NODE_ENV !== 'test') {
+  connectDB();
+}
 
 // Middleware
 app.use(cors());
@@ -35,10 +37,12 @@ app.get('/', (req, res) => {
   res.json({ message: 'Welcome to Book Review API' });
 });
 
-// Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// Start server only if not imported by another file (like in tests)
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
 
 module.exports = app;

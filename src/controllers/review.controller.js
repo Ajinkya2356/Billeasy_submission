@@ -108,7 +108,11 @@ exports.deleteReview = async (req, res) => {
       });
     }
 
-    await review.remove();
+    // Using findByIdAndDelete instead of remove
+    await Review.findByIdAndDelete(req.params.id);
+    
+    // Calculate average rating after deletion
+    await Review.getAverageRating(review.book);
 
     res.status(200).json({
       success: true,
